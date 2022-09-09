@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css"/>
+    <script src="scripts/bank.js" defer></script>
+    <script src="scripts/laptops.js" defer></script>
+    <script src="scripts/work.js" defer></script>
+    <title>Komputer Store</title>
+</head>
+
+<body>
+    <!-- header -->
+    <section>
+        <div class="header">
+            <h1>Komputer Store</h1>
+        </div>
+    </section>
+    
+    <!-- content container -->
+    <section>
+        <div class="content-container">
+
+            <!-- Bank container -->
+            <div class="content-subcontainer">
+                <div class="content-title-container">
+                        <h1>Joe Banker</h1>
+                </div>
+                <div class="content-body-container">
+                    <p id="bank-account"></p>
+                    <div>
+                        <p id="current-loan"></p>
+                    </div>
+                    <p id="successResponse" class="success"></p>
+                    <p id="errorResponse" class="error"></p>
+                    <div class="button-container">
+                        <button id="btn-getLoan" class="button getLoan">Get a loan</button>
+                        <button id="btn-payLoan" class="button repayLoan">Repay Loan</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Work container -->
+            <div class="content-subcontainer">
+                <div class="content-title-container">
+                    <h1>Work</h1>
+                </div>
+                <div class="content-body-container">
+                    <div class="content-body-text">
+                        <p id="pay-account"></p>
+                    </div>
+                    <div class="button-container">
+                        <button id="btn-bank" class="button bank">Bank</button>
+                        <button id="btn-work" class="button work">Work</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Laptops container -->
+            <div class="content-subcontainer">
+                <div class="content-title-container">
+                    <h1>Laptops</h1>
+                </div>
+                <div class="content-body-container">
+                    <label for="laptop-selecter"></label>
+                    <select name="laptop-selecter" id="">
+                        <option value="">Acer</option>
+                        <option value="">Lenovo</option>
+                        <option value="">Alienware</option>
+                        <option value="">MacYuck</option>
+                    </select>
+                    <h2>Features:</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- computer information container -->
+    <section>
+
+    </section>
+</body>
+</html>
