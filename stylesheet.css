@@ -72,12 +72,10 @@
     margin: 5px;
   }
   .repayLoan {
-    color: rgba(75, 75, 75, 0.894);
     background-color: orange;
   }
 
   .getLoan {
-    color: rgba(75, 75, 75, 0.894);
     background-color: rgb(82, 254, 188);
   }
 
@@ -98,7 +96,7 @@
   
   .button:enabled:hover {
     transition-duration: 0.1s;
-    opacity: 0.5;
+    box-shadow: 2px 2px 1px 1px rgb(175, 181, 187);
   }
   
   .button:enabled:after {
@@ -115,15 +113,6 @@
     box-shadow: 0 0 10px 40px white;
   }
   
-  .button:enabled:active:after {
-    box-shadow: 0 0 0 0 white;
-    position: absolute;
-    border-radius: 10px;
-    left: 0;
-    top:0;
-    opacity: 1;
-    transition: 0s;
-  }
   
   .button:enabled:active {
     top: 1px;
@@ -143,16 +132,23 @@ p {
     font-size: larger;
 }
 
-p:empty{
-    display: none;
+#moneyAnimation {
+  position: relative;
+  color: green;
 }
 
-.error {
-    color: red;
-    font-size: medium;
+@keyframes moneyAnimation {
+  0% {
+    opacity: 1;
+    top: -50px;
+  }
+  100% {
+    opacity: 0;
+    top: -70px;
+  }
 }
 
-.success {
-    color: green;
-    font-size: medium;
+.moneyAnimation {
+  animation: moneyAnimation 1s forwards;
+  position: absolute;
 }

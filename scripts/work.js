@@ -1,4 +1,5 @@
 let payAccount = 0;
+let salary = 100;
 let payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount);
 let payAccountText = document.getElementById("pay-account");
 payAccountText.innerText = `Pay account balance ${payAccountFormatted}`; // Display current Pay account balance
@@ -22,10 +23,16 @@ function buttonBank() {
 // Functions
 
 function work() {
-    payAccount += 100;
+    payAccount += salary;
     payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount)
     // Update displayed pay account balance
     payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
+
+    // Animation for earning money
+    var moneyAnimation = document.createElement("anim");
+    moneyAnimation.innerHTML = `+${salary}`
+    document.getElementById("moneyAnimation").appendChild(moneyAnimation);
+    moneyAnimation.classList.add("moneyAnimation"); // Add the class that animates
 }
 
 function bank() {

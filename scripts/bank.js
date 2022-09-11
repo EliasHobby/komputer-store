@@ -29,20 +29,14 @@ function buttonPayLoan() {
 
 function getLoan() {
     if (!currentLoan == 0) { // If current loan exists, throw error
-            errorResponse = "Error: Please pay back the balance of the outstanding loan before taking up a new one.";
-            successResponse = null;
-            document.getElementById("errorResponse").innerHTML = errorResponse;
-            document.getElementById("successResponse").innerHTML = successResponse;
+        alert("Error: Please pay back the balance of the outstanding loan before taking up a new one.");
     } else { // If no current loan exists, allow new loan
         let errorResponse;
         let successResponse;
         let maxLoan = bankAccount * 2;
         let attemptedLoan = prompt(`How much do you want to loan?`);
         if (attemptedLoan > maxLoan) { // If user attempts to loan more than double their bank value
-            errorResponse = "Error: You cannot loan more than double your bank value!";
-            successResponse = null;
-            document.getElementById("errorResponse").innerHTML = errorResponse;
-            document.getElementById("successResponse").innerHTML = successResponse;
+            alert("Error: You cannot loan more than double your bank value!");
         } else { // If successful loan
             if(attemptedLoan === null) {
                 return;
@@ -51,10 +45,7 @@ function getLoan() {
             currentLoanFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(currentLoan);
             currentLoanText = document.getElementById("current-loan");
             currentLoanText.innerText = `Outstanding loan: ${currentLoanFormatted}`
-            successResponse = "Loan successful!";
-            errorResponse = null;
-            document.getElementById("successResponse").innerHTML = successResponse;
-            document.getElementById("errorResponse").innerHTML = errorResponse;
+            alert("Loan successful!");
             btnPayLoan.disabled = false; // Make the button to repay loan visible on successful loan
         }
     }
@@ -79,6 +70,9 @@ function payLoan() {
         payAccount = 0;
         payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount)
         payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
+
+        alert("You are now debt-free!");
+        const interval = setInterval(confetti, 10000);
         
     } else { // If the pay account does not have enough money to repay the entire loan
 
