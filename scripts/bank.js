@@ -1,22 +1,11 @@
-let payAccount = 0;
-let payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount);
 let bankAccount = 0;
 let bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
 let currentLoan;
 let currentLoanFormatted;
 let currentLoanText;
 
-let payAccountText = document.getElementById("pay-account");
-payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
-
 let bankAccountText = document.getElementById("bank-account");
 bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`
-
-const btnWork = document.getElementById("btn-work");
-btnWork.addEventListener("click", buttonWork);
-
-const btnBank = document.getElementById("btn-bank");
-btnBank.addEventListener("click", buttonBank);
 
 const btnGetLoan = document.getElementById("btn-getLoan");
 btnGetLoan.addEventListener("click", buttonGetLoan);
@@ -26,13 +15,7 @@ btnPayLoan.disabled = true;
 btnPayLoan.addEventListener("click", buttonPayLoan);
 
 // Handlers
-function buttonWork() {
-    work();
-}
 
-function buttonBank() {
-    bank();
-}
 
 function buttonGetLoan() {
     getLoan();
@@ -44,23 +27,6 @@ function buttonPayLoan() {
 
 
 // Functions
-
-function work() {
-    payAccount += 100;
-    payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount)
-
-    payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
-}
-
-function bank() {
-    bankAccount += payAccount;
-    bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount)
-    payAccount = 0;
-    payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount)
-
-    payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
-    bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`;
-}
 
 function getLoan() {
     if (!currentLoan == 0) { // If current loan exists, throw error
