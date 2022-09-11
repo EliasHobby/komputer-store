@@ -11,11 +11,10 @@ const btnGetLoan = document.getElementById("btn-getLoan");
 btnGetLoan.addEventListener("click", buttonGetLoan);
  
 const btnPayLoan = document.getElementById("btn-payLoan");
-btnPayLoan.disabled = true;
+btnPayLoan.disabled = true; // Hide button to repay loan when user has no active loan
 btnPayLoan.addEventListener("click", buttonPayLoan);
 
 // Handlers
-
 
 function buttonGetLoan() {
     getLoan();
@@ -56,7 +55,7 @@ function getLoan() {
             errorResponse = null;
             document.getElementById("successResponse").innerHTML = successResponse;
             document.getElementById("errorResponse").innerHTML = errorResponse;
-            btnPayLoan.disabled = false;
+            btnPayLoan.disabled = false; // Make the button to repay loan visible on successful loan
         }
     }
 }
@@ -74,7 +73,7 @@ function payLoan() {
         currentLoan = 0;
         currentLoanText = document.getElementById("current-loan");
         currentLoanText.innerText = null;
-        btnPayLoan.disabled = true;
+        btnPayLoan.disabled = true; // Hide the button to repay the loan if the loan is repaid in full
 
         // Set pay account balance to 0
         payAccount = 0;
