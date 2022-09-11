@@ -57,8 +57,8 @@ function payLoan() {
         // Add additional money from pay account to the bank account after repaying the loan
         payAccount = payAccount - currentLoan;
         bankAccount += payAccount;
-        bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount)
-        bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`;
+        bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
+        
 
         // Remove the existing loan
         currentLoan = 0;
@@ -68,11 +68,13 @@ function payLoan() {
 
         // Set pay account balance to 0
         payAccount = 0;
-        payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount)
+        payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount);
+
+        // Update displayed balances
+        bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`;
         payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
 
         alert("You are now debt-free!");
-        const interval = setInterval(confetti, 10000);
         
     } else { // If the pay account does not have enough money to repay the entire loan
 
@@ -80,12 +82,13 @@ function payLoan() {
         currentLoan -= payAccount;
         currentLoanFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(currentLoan);
         currentLoanText = document.getElementById("current-loan");
-        currentLoanText.innerText = `Outstanding loan: ${currentLoanFormatted}`
 
         // Set pay account balance to 0
         payAccount = 0;
         payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount)
+
+        // Update displayed balances
+        currentLoanText.innerText = `Outstanding loan: ${currentLoanFormatted}`
         payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
-        
     }
 }
