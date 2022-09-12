@@ -35,10 +35,15 @@ function getLoan() {
         let successResponse;
         let maxLoan = bankAccount * 2;
         let attemptedLoan = prompt(`How much do you want to loan?`);
+        if (isNaN(attemptedLoan)) {
+            alert("Error: Please enter a sum consisting of only numbers.");
+            attemptedLoan = null; // If user cancels input, ensure that we don't set attempted loan to an empty string
+            getLoan();
+        }
         if (attemptedLoan > maxLoan) { // If user attempts to loan more than double their bank value
             alert("Error: You cannot loan more than double your bank value!");
         } else { // If successful loan
-            if(attemptedLoan === null) {
+            if(attemptedLoan === null) { // If user cancels input, ensure that we don't set attempted loan to an empty string
                 return;
             }
             currentLoan = attemptedLoan;
@@ -52,7 +57,7 @@ function getLoan() {
 }
 
 function payLoan() {
-    if (currentLoan < payAccount) { // If the pay account has enough money to repay the entire loan
+    if (currentLoan <= payAccount) { // If the pay account has enough money to repay the entire loan
 
         // Add additional money from pay account to the bank account after repaying the loan
         payAccount = payAccount - currentLoan;
