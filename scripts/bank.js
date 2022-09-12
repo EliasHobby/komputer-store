@@ -31,14 +31,11 @@ function getLoan() {
     if (!currentLoan == 0) { // If current loan exists, throw error
         alert("Error: Please pay back the balance of the outstanding loan before taking up a new one.");
     } else { // If no current loan exists, allow new loan
-        let errorResponse;
-        let successResponse;
         let maxLoan = bankAccount * 2;
         let attemptedLoan = prompt(`How much do you want to loan?`);
-        if (isNaN(attemptedLoan)) {
-            alert("Error: Please enter a sum consisting of only numbers.");
+        if (isNaN(attemptedLoan) || attemptedLoan <= 0) {
+            alert("Error: Please enter a sum consisting of only positive numbers.");
             attemptedLoan = null; // If user cancels input, ensure that we don't set attempted loan to an empty string
-            getLoan();
         }
         if (attemptedLoan > maxLoan) { // If user attempts to loan more than double their bank value
             alert("Error: You cannot loan more than double your bank value!");

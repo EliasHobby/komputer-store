@@ -19,6 +19,7 @@
         </div>
     </section>
     
+    <main>
     <!-- content container -->
     <section>
         <div class="content-container">
@@ -33,8 +34,6 @@
                     <div>
                         <p id="current-loan"></p>
                     </div>
-                    <p id="successResponse" class="success"></p>
-                    <p id="errorResponse" class="error"></p>
                     <div class="button-container">
                         <button id="btn-getLoan" class="button getLoan">Get a loan</button>
                         <button id="btn-payLoan" class="button repayLoan">Repay Loan</button>
@@ -64,25 +63,38 @@
             <!-- Laptops container -->
             <div class="content-subcontainer">
                 <div class="content-title-container">
-                    <h1>Laptops</h1>
+                    <h1>Laptop Catalog</h1>
                 </div>
                 <div class="content-body-container">
-                    <label for="laptop-selecter"></label>
-                    <select name="laptop-selecter" id="">
-                        <option value="">Acer</option>
-                        <option value="">Lenovo</option>
-                        <option value="">Alienware</option>
-                        <option value="">MacYuck</option>
-                    </select>
-                    <h2>Features:</h2>
-                </div>
+                    <fieldset>
+                        <label for="laptops">Available Laptops:</label>
+                        <select name="laptops" id="laptops">
+                            <option value="">--- Choose a Laptop ---</option>
+                        </select>
+                        <ul id="laptop-specs"></ul>
+                    </fieldset>
+                        
             </div>
         </div>
     </section>
 
     <!-- computer information container -->
-    <section>
+    <section id="laptopInfo">
+        <div class="content-container">
+            <div class="content-laptop-info-container">
+                <img src="" alt="" id="laptop-image">
+                <div class="content-laptop-info-subcontainer">
+                    <h1 id="laptop-title"></h1>
+                    <p id="laptop-description"></p>
+                </div>
+                <div class="content-laptop-info-subcontainer content-laptop-info-subcontainer-pay">
+                    <h1 id="laptop-price" class="price"></h2>
+                    <button id="btn-buyLaptop" class="button buyNow">BUY NOW</button>
+                </div>
+            </div>
+        </div>
 
     </section>
+</main>
 </body>
 </html>
