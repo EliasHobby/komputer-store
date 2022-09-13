@@ -1,5 +1,5 @@
 .header {
-    background-color: lightslategray;
+    background-color: rgb(134, 129, 124);
     color: white;
     max-height: 100px;
     padding-left: 220px;
@@ -7,6 +7,12 @@
     left: 0;
     right: 0;
     top: 0;
+}
+
+body {
+  background-image: url("https://images.unsplash.com/photo-1604223172843-9541457ba7e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .content-container {
@@ -24,15 +30,20 @@
         flex-direction: column;
         flex-grow: 1;
         margin: 0 15px;
-        background-color: rgb(246, 246, 246);
+        background-color: rgba(246, 246, 246, 0.9);
         border-radius: 15px;
-        box-shadow: 2px 3px 3px 4px rgb(226, 226, 226);
+        transition: 0.2s;
     }
+
+        .content-subcontainer:hover {
+          background-color: rgba(246, 246, 246, 1);
+          transition: 0.2s;
+        }
 
         .content-title-container {
             display: flex;
             padding-left: 20px;
-            border-bottom:2px solid white;
+            border-bottom:2px solid rgb(248, 248, 248);
             flex-wrap: wrap;
         }
 
@@ -62,11 +73,17 @@
         flex-direction: row;
         flex-grow: 1;
         margin: 0 15px;
-        background-color: rgb(246, 246, 246);
+        background-color: rgba(246, 246, 246, 0.9);
         border-radius: 15px;
         /* box-shadow: 2px 3px 3px 4px rgb(226, 226, 226); */
         padding: 50px;
         justify-content: space-between;
+        transition: 0.2s;
+    }
+
+    .content-laptop-info-container:hover{
+      background-color: rgba(246, 246, 246, 1);
+      transition: 0.2s;
     }
       .content-laptop-info-subcontainer {
         display: flex;
