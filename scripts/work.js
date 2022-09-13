@@ -1,5 +1,6 @@
 // Variables
-
+const moneySound = new Audio("https://www.fesliyanstudios.com/play-mp3/6273");
+const bankingSound = new Audio("https://www.fesliyanstudios.com/play-mp3/6263");
 let payAccount = 0;
 let salary = 100;
 
@@ -30,6 +31,7 @@ function buttonBank() {
 
 function work() {
     payAccount += salary;
+
     // Update displayed pay account balance
     updatePayBalance();
 
@@ -38,9 +40,13 @@ function work() {
     moneyAnimation.innerHTML = `+${salary}`
     document.getElementById("moneyAnimation").appendChild(moneyAnimation);
     moneyAnimation.classList.add("moneyAnimation"); // Add the class that animates
+
+    // Sound effect
+    moneySound.play();
 }
 
 function bank() {
+    bankingSound.play();
     if (!currentLoan == 0) { // If user has a loan. currentLoan is defined in bank.js and can be used because we load this script after
         if (currentLoan <= Math.round((10 / 100) * payAccount)) { // If 10% of the money in the pay account is enough to cover the remainder of the loan
 
