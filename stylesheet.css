@@ -33,11 +33,13 @@ body {
         background-color: rgba(246, 246, 246, 0.9);
         border-radius: 15px;
         transition: 0.2s;
+        box-shadow: 1px 1px 1px 1px rgb(134, 134, 134);
     }
 
         .content-subcontainer:hover {
           background-color: rgba(246, 246, 246, 1);
           transition: 0.2s;
+          box-shadow: 4px 4px 4px 4px rgb(115, 115, 115);
         }
 
         .content-title-container {
@@ -78,12 +80,14 @@ body {
         /* box-shadow: 2px 3px 3px 4px rgb(226, 226, 226); */
         padding: 50px;
         justify-content: space-between;
+        box-shadow: 1px 1px 1px 1px rgb(134, 134, 134);
         transition: 0.2s;
-    }
-
-    .content-laptop-info-container:hover{
-      background-color: rgba(246, 246, 246, 1);
-      transition: 0.2s;
+      }
+      
+      .content-laptop-info-container:hover{
+        background-color: rgba(246, 246, 246, 1);
+        box-shadow: 3px 3px 3px 3px rgb(115, 115, 115);
+        transition: 0.2s;
     }
       .content-laptop-info-subcontainer {
         display: flex;
@@ -101,6 +105,7 @@ body {
         width: 248px;
         height: 248px;
         box-shadow: 2px 3px 3px 4px gainsboro;
+        border-radius: 5px;
       }
 
 .button{
