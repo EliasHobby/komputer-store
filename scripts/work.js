@@ -1,8 +1,14 @@
+// Variables
+
 let payAccount = 0;
 let salary = 100;
+
 let payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount);
 let payAccountText = document.getElementById("pay-account");
 payAccountText.innerText = `Pay account balance ${payAccountFormatted}`; // Display current Pay account balance
+
+
+// Buttons
 
 const btnWork = document.getElementById("btn-work"); // Work button, earn money
 btnWork.addEventListener("click", buttonWork);
@@ -48,27 +54,27 @@ function bank() {
             currentLoanText.innerText = null;
             btnPayLoan.disabled = true; // Hide the button to repay the loan if the loan is repaid in full
 
-            // Update displayed balances
-            bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
-            payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount);
+            // Disposable amount is no longer necessary to display as it is equal to bank balance
+            disposableAmount = 0;
+            disposableAmountText.innerText = null;
 
-            payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
-            bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`;
+            // Update displayed balances
+            updateBankBalance();
+            updatePayBalance();
+            updateDisposableBalance();
 
             alert("You are now debt-free!");
         } else { // If 10% of the money in the pay account doesn't cover the remainder of the loan
             currentLoan -= Math.round((10 / 100) * payAccount);
             bankAccount += payAccount - Math.round((10 / 100) * payAccount);
+            disposableAmount = +currentLoan + bankAccount;
             payAccount = 0;
 
             // Update displayed balances
-            currentLoanFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(currentLoan);
-            bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
-            payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount);
-
-            currentLoanText.innerText = `Outstanding loan: ${currentLoanFormatted}`
-            bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`;
-            payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
+            updatePayBalance();
+            updateBankBalance();
+            updateCurrentLoanBalance();
+            updateDisposableBalance();
         }
     }
     else {
@@ -76,9 +82,7 @@ function bank() {
         payAccount = 0;
     
         // Update displayed balances
-        payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount);
-        bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
-        payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
-        bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`;
+        updateBankBalance();
+        updatePayBalance();
     }
 }
