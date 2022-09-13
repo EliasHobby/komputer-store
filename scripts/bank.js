@@ -1,11 +1,19 @@
+// Variables
+
 let bankAccount = 0;
-let bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
 let currentLoan;
+let disposableAmount;
+
+let bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
 let currentLoanFormatted;
-let currentLoanText;
+let disposableAmountFormatted;
 
 let bankAccountText = document.getElementById("bank-account");
+let currentLoanText = document.getElementById("current-loan");
+let disposableAmountText = document.getElementById("disposable-amount");
 bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`
+
+// Buttons
 
 const btnGetLoan = document.getElementById("btn-getLoan");
 btnGetLoan.addEventListener("click", buttonGetLoan);
@@ -44,9 +52,11 @@ function getLoan() {
             alert("Error: You cannot loan more than double your bank value!");
         } else { // If successful loan
             currentLoan = attemptedLoan;
-            currentLoanFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(currentLoan);
-            currentLoanText = document.getElementById("current-loan");
-            currentLoanText.innerText = `Outstanding loan: ${currentLoanFormatted}`
+            disposableAmount = +currentLoan + bankAccount;
+
+            updateDisposableBalance();
+            updateCurrentLoanBalance();
+            
             alert("Loan successful!");
             btnPayLoan.disabled = false; // Make the button to repay loan visible on successful loan
         }
@@ -60,21 +70,21 @@ function payLoan() {
         payAccount = payAccount - currentLoan;
         bankAccount += payAccount;
         
-        
         // Remove the existing loan
         currentLoan = 0;
-        currentLoanText = document.getElementById("current-loan");
         currentLoanText.innerText = null;
         btnPayLoan.disabled = true; // Hide the button to repay the loan if the loan is repaid in full
-        
+
+        // Disposable amount is no longer necessary to display as it is equal to bank balance
+        disposableAmount = 0;
+        disposableAmountText.innerText = null;
+
         // Set pay account balance to 0
         payAccount = 0;
         
         // Update displayed balances
-        bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
-        payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount);
-        bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`;
-        payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
+        updateBankBalance();
+        updatePayBalance();
 
         alert("You are now debt-free!");
         
@@ -82,15 +92,34 @@ function payLoan() {
 
         // Subtract pay account from current loan and update the value
         currentLoan -= payAccount;
-        currentLoanText = document.getElementById("current-loan");
+        disposableAmount = +currentLoan + bankAccount;
         
         // Set pay account balance to 0
         payAccount = 0;
         
         // Update displayed balances
-        currentLoanFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(currentLoan);
-        payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount)
-        currentLoanText.innerText = `Outstanding loan: ${currentLoanFormatted}`
-        payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
+        updatePayBalance();
+        updateCurrentLoanBalance();
+        updateDisposableBalance();
     }
+}
+
+function updateBankBalance() {
+    bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
+    bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`;
+}
+
+function updatePayBalance() {
+    payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount);
+    payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
+}
+
+function updateCurrentLoanBalance() {
+    currentLoanFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(currentLoan);
+    currentLoanText.innerText = `Outstanding loan: ${currentLoanFormatted}`;
+}
+
+function updateDisposableBalance() {
+    disposableAmountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(disposableAmount);
+    disposableAmountText.innerText = `Disposable amount: ${disposableAmountFormatted}`;
 }
