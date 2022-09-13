@@ -85,6 +85,7 @@ function payLoan() {
         // Update displayed balances
         updateBankBalance();
         updatePayBalance();
+        updateDisposableBalance();
 
         alert("You are now debt-free!");
         
