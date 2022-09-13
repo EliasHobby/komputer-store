@@ -13,7 +13,9 @@ function buttonBuyNow() {
 
 // Functions
 function buyNow() {
-    if (bankAccount + currentLoan < selectedLaptop.price) { // If user can't afford a specific laptop
+    if (!currentLoan && bankAccount < selectedLaptop.price) {
+        alert("You cannot afford this item!");
+    } else if (currentLoan + bankAccount < selectedLaptop.price) { // If user can't afford a specific laptop
         alert("You cannot afford this item!");
     } else { // If the user can afford a specific laptop
         bankAccount -= selectedLaptop.price;
