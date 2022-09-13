@@ -19,8 +19,9 @@ function buyNow() {
         alert("You cannot afford this item!");
     } else { // If the user can afford a specific laptop
         bankAccount -= selectedLaptop.price;
-        bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
-        bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`;
+        disposableAmount -= selectedLaptop.price;
+        updateDisposableBalance();
+        updateBankBalance();
         alert(`Congratulations, you are now the proud owner of a ${selectedLaptop.title}!`);
     }
 }
