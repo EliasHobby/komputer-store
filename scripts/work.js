@@ -30,9 +30,8 @@ function buttonBank() {
 
 function work() {
     payAccount += salary;
-    payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount)
     // Update displayed pay account balance
-    payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
+    updatePayBalance();
 
     // Animation for earning money
     var moneyAnimation = document.createElement("anim");
