@@ -50,7 +50,6 @@ function bank() {
 
             // Remove the existing loan
             currentLoan = 0;
-            currentLoanText = document.getElementById("current-loan");
             currentLoanText.innerText = null;
             btnPayLoan.disabled = true; // Hide the button to repay the loan if the loan is repaid in full
 
@@ -61,7 +60,6 @@ function bank() {
             // Update displayed balances
             updateBankBalance();
             updatePayBalance();
-            updateDisposableBalance();
 
             alert("You are now debt-free!");
         } else { // If 10% of the money in the pay account doesn't cover the remainder of the loan
