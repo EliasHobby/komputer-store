@@ -33,16 +33,16 @@ function getLoan() {
     } else { // If no current loan exists, allow new loan
         let maxLoan = bankAccount * 2;
         let attemptedLoan = prompt(`How much do you want to loan?`);
-        if (isNaN(attemptedLoan) || attemptedLoan <= 0) {
+        if(attemptedLoan === null) { // If user cancels input, ensure that we don't set attempted loan to an empty string
+            return;
+        }
+        if (isNaN(attemptedLoan) || attemptedLoan <= 0) { // If user tries to loan a non integer, or an amount of zero or below, throw error
             alert("Error: Please enter a sum consisting of only positive numbers.");
-            attemptedLoan = null; // If user cancels input, ensure that we don't set attempted loan to an empty string
+            return;
         }
         if (attemptedLoan > maxLoan) { // If user attempts to loan more than double their bank value
             alert("Error: You cannot loan more than double your bank value!");
         } else { // If successful loan
-            if(attemptedLoan === null) { // If user cancels input, ensure that we don't set attempted loan to an empty string
-                return;
-            }
             currentLoan = attemptedLoan;
             currentLoanFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(currentLoan);
             currentLoanText = document.getElementById("current-loan");
@@ -56,23 +56,23 @@ function getLoan() {
 function payLoan() {
     if (currentLoan <= payAccount) { // If the pay account has enough money to repay the entire loan
 
-        // Add additional money from pay account to the bank account after repaying the loan
+        // Add surplus money from pay account to the bank account after repaying the loan
         payAccount = payAccount - currentLoan;
         bankAccount += payAccount;
-        bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
         
-
+        
         // Remove the existing loan
         currentLoan = 0;
         currentLoanText = document.getElementById("current-loan");
         currentLoanText.innerText = null;
         btnPayLoan.disabled = true; // Hide the button to repay the loan if the loan is repaid in full
-
+        
         // Set pay account balance to 0
         payAccount = 0;
-        payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount);
-
+        
         // Update displayed balances
+        bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
+        payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount);
         bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`;
         payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
 
@@ -82,14 +82,14 @@ function payLoan() {
 
         // Subtract pay account from current loan and update the value
         currentLoan -= payAccount;
-        currentLoanFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(currentLoan);
         currentLoanText = document.getElementById("current-loan");
-
+        
         // Set pay account balance to 0
         payAccount = 0;
-        payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount)
-
+        
         // Update displayed balances
+        currentLoanFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(currentLoan);
+        payAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(payAccount)
         currentLoanText.innerText = `Outstanding loan: ${currentLoanFormatted}`
         payAccountText.innerText = `Pay account balance ${payAccountFormatted}`;
     }

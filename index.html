@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet.css"/>
+    <link rel="stylesheet" href="stylesheet.css" />
     <script src="scripts/bank.js" defer></script>
     <script src="scripts/laptops.js" defer></script>
     <script src="scripts/work.js" defer></script>
@@ -18,83 +19,87 @@
             <h1>Komputer Store</h1>
         </div>
     </section>
-    
+
     <main>
-    <!-- content container -->
-    <section>
-        <div class="content-container">
+        <!-- content container -->
+        <section>
+            <div class="content-container">
 
-            <!-- Bank container -->
-            <div class="content-subcontainer">
-                <div class="content-title-container">
+                <!-- Bank container -->
+                <div class="content-subcontainer">
+                    <div class="content-title-container">
                         <h1>Joe Banker</h1>
-                </div>
-                <div class="content-body-container">
-                    <p id="bank-account"></p>
-                    <div>
-                        <p id="current-loan"></p>
                     </div>
-                    <div class="button-container">
-                        <button id="btn-getLoan" class="button getLoan">Get a loan</button>
-                        <button id="btn-payLoan" class="button repayLoan">Repay Loan</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Work container -->
-            <div class="content-subcontainer">
-                <div class="content-title-container">
-                    <h1>Work</h1>
-                </div>
-                <div class="content-body-container">
-                    <div class="content-body-text">
-                        <p id="pay-account"></p>
-                    </div>
-                    <div class="button-container">
-                        <button id="btn-bank" class="button bank">Bank</button>
-                        <button id="btn-work" class="button work">
-                            Work
-                            <div id="moneyAnimation"></div> <!-- animation on click -->
-                        </button>
+                    <div class="content-body-container">
+                        <p id="bank-account"></p>
+                        <div>
+                            <p id="current-loan"></p>
+                        </div>
+                        <div class="button-container">
+                            <button id="btn-getLoan" class="button getLoan">Get a loan</button>
+                            <button id="btn-payLoan" class="button repayLoan">Repay Loan</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Laptops container -->
-            <div class="content-subcontainer">
-                <div class="content-title-container">
-                    <h1>Laptop Catalog</h1>
+                <!-- Work container -->
+                <div class="content-subcontainer">
+                    <div class="content-title-container">
+                        <h1>Work</h1>
+                    </div>
+                    <div class="content-body-container">
+                        <div class="content-body-text">
+                            <p id="pay-account"></p>
+                        </div>
+                        <div class="button-container">
+                            <button id="btn-bank" class="button bank">Bank</button>
+                            <button id="btn-work" class="button work"> Work
+                                <div id="moneyAnimation"></div> <!-- animation on click -->
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="content-body-container">
-                    <fieldset>
-                        <label for="laptops">Available Laptops:</label>
-                        <select name="laptops" id="laptops">
-                            <option value="">--- Choose a Laptop ---</option>
-                        </select>
-                        <ul id="laptop-specs"></ul>
-                    </fieldset>
-                        
-            </div>
-        </div>
-    </section>
 
-    <!-- computer information container -->
-    <section id="laptopInfo">
-        <div class="content-container">
-            <div class="content-laptop-info-container">
-                <img src="" alt="" id="laptop-image">
-                <div class="content-laptop-info-subcontainer">
-                    <h1 id="laptop-title"></h1>
-                    <p id="laptop-description"></p>
+                <!-- Laptops container -->
+                <div class="content-subcontainer">
+                    <div class="content-title-container">
+                        <h1>Laptop Catalog</h1>
+                    </div>
+                    <div class="content-body-container" style="justify-content: flex-start;">
+                            <p>Available Laptops:</p>
+                            <select name="laptops" id="laptops">
+                                <option selected="true" disabled="disabled">--- Choose a Laptop ---</option>
+                            </select>
+                            <ul id="laptop-specs"></ul>
+                    </div>
                 </div>
-                <div class="content-laptop-info-subcontainer content-laptop-info-subcontainer-pay">
-                    <h1 id="laptop-price" class="price"></h2>
-                    <button id="btn-buyLaptop" class="button buyNow">BUY NOW</button>
-                </div>
-            </div>
-        </div>
 
-    </section>
-</main>
+            </div>
+        </section>
+
+        <!-- computer information container -->
+        <section id="laptopInfo">
+            <div class="content-container">
+
+                <div class="content-laptop-info-container">
+                    <img src="" alt="" id="laptop-image" class="laptop-image">
+                    <div class="content-laptop-info-subcontainer">
+                        <h1 id="laptop-title"></h1>
+                        <p id="laptop-description"></p>
+                    </div>
+                    <div class="content-laptop-info-subcontainer content-laptop-info-subcontainer-pay">
+                        <h1 id="laptop-price" class="price">
+                        </h1>
+                        <button id="btn-buyLaptop" class="button buyNow">BUY NOW</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        
+
+    </main>
 </body>
+
 </html>

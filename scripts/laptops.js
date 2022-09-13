@@ -1,7 +1,7 @@
 const laptops = [];
 let selectedLaptop;
 
-document.getElementById("laptopInfo").style.display = "none";
+document.getElementById("laptopInfo").style.display = "none"; // Hide the block of laptop info when no laptop is selected
 
 const btnBuyNow = document.getElementById("btn-buyLaptop");
 btnBuyNow.addEventListener("click", buttonBuyNow);
@@ -13,9 +13,9 @@ function buttonBuyNow() {
 
 // Functions
 function buyNow() {
-    if (bankAccount + currentLoan < selectedLaptop.price) {
+    if (bankAccount + currentLoan < selectedLaptop.price) { // If user can't afford a specific laptop
         alert("You cannot afford this item!");
-    } else {
+    } else { // If the user can afford a specific laptop
         bankAccount -= selectedLaptop.price;
         bankAccountFormatted = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' }).format(bankAccount);
         bankAccountText.innerText = `Bank balance ${bankAccountFormatted}`;
@@ -76,7 +76,7 @@ async function fetchLaptops() {
     }
     
     const renderLaptopInfo = (selectedLaptop) => {
-        console.log(selectedLaptop.image);
+        laptopImageElement.src = "https://icon-library.com/images/loading-icon-animated-gif/loading-icon-animated-gif-15.jpg";
         if(UrlExists("https://noroff-komputer-store-api.herokuapp.com/" + selectedLaptop.image)) {
             laptopImageElement.src = "https://noroff-komputer-store-api.herokuapp.com/" + selectedLaptop.image;
         } else {
